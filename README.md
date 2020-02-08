@@ -10,6 +10,8 @@ How to use:
 
 - Just pass in a Url into the component and your good to go.
 
+If you need to use this natively theres a react-native version [Example](https://github.com/j-mendez/react-native-reader)
+
 ## Installation Instructions
 
 ```bash
@@ -26,7 +28,7 @@ import ReaderView from "react-reader-view";
 <ReaderView url="https://www.a11ywatch.com" />;
 ```
 
-- For more help getting started checkout [Example](https://github.com/j-mendez/react-reader-example-project)
+- For more help getting started checkout [Example](https://github.com/A11yWatch/react-reader-example-project)
 
 ## Available Props
 
