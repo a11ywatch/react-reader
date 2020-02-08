@@ -35,7 +35,7 @@ class ReadabilityView extends PureComponent {
 
       this.setState({
         srcDoc: !readabilityArticle
-          ? `<h1>Sorry, issue parsing ${url}</h1>`
+          ? `<span>Sorry, issue parsing ${url}</span>`
           : readabilityArticle.content
       });
 
@@ -61,9 +61,10 @@ class ReadabilityView extends PureComponent {
 
 ReadabilityView.defaultProps = {
   url: "",
-  onError: null,
   renderLoader: "Loading...",
-  iframeProps: {}
+  iframeProps: {},
+  onError: null,
+  onParse: null
 };
 
 export default ReadabilityView;

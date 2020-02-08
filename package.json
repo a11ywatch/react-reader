@@ -1,11 +1,12 @@
 {
   "name": "react-reader-view",
-  "version": "1.1.2",
-  "description": "React package that turns a Website into a Safari like Readability View",
+  "version": "1.1.4",
+  "description": "React package that turns a Website into a Safari like Readability reader mode view",
   "keywords": [
     "readability",
     "reader",
-    "react-readability"
+    "react-readability",
+    "react-reader"
   ],
   "main": "src/index.js",
   "repository": {
@@ -13,15 +14,12 @@
     "url": "https://github.com/jeffreymendez1993/react-readability.git"
   },
   "dependencies": {
-    "clean-html-js": "^1.0.1",
-    "html-readability": "^0.1.4",
-    "readability": "^0.1.0",
-    "sanitize-html": "^1.20.0"
+    "clean-html-js": "^1.0.1"
   },
   "author": "Jeffrey Mendez <jeffmendez19@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jeffreymendez1993/react-readability/issues"
+    "url": "https://github.com/jeffreymendez1993/react-reader/issues"
   },
-  "homepage": "https://github.com/jeffreymendez1993/react-readability#readme"
+  "homepage": "https://github.com/jeffreymendez1993/react-reader#readme"
 }

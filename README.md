@@ -32,10 +32,10 @@ import ReaderView from "react-reader-view";
 
 ## Available Props
 
-| prop         | default   | type      | description                                                               |
-| ------------ | --------- | --------- | ------------------------------------------------------------------------- |
-| url          | ""        | string    | Required: A valid web url source                                          |
-| renderLoader | "loading" | Component | Optional: A custom component to render while your content is being loaded |
-| iframeProps  | null      | object    | Optional: A valid iframe html property                                    |
-| onParse      | null      | function  | Optional: A callback function that returns the readability Object         |
-| onError      | null      | function  | Optional: A function that fires the error if a url is not valid           |
+| prop         | default      | type      | description                                                               |
+| ------------ | ------------ | --------- | ------------------------------------------------------------------------- |
+| url          | ""           | string    | Required: A valid web url source                                          |
+| renderLoader | "Loading..." | Component | Optional: A custom component to render while your content is being loaded |
+| iframeProps  | null         | object    | Optional: A valid iframe html property                                    |
+| onParse      | null         | function  | Optional: A callback function that returns the readability Object         |
+| onError      | null         | function  | Optional: A function that fires the error if a url is not valid           |
