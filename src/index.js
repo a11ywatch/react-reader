@@ -6,8 +6,7 @@ class ReadabilityView extends PureComponent {
     super(props);
 
     this.state = {
-      cleanHtmlSource: undefined,
-      readabilityArticle: null
+      srcDoc: undefined
     };
 
     this.parseHtml = this.parseHtml.bind(this);
@@ -27,7 +26,7 @@ class ReadabilityView extends PureComponent {
   }
 
   async parseHtml() {
-    const { url, title, onError } = this.props;
+    const { url, title, onError, onParse } = this.props;
 
     try {
       const response = await fetch(url);
@@ -35,11 +34,14 @@ class ReadabilityView extends PureComponent {
       const readabilityArticle = await cleanHtml(html, url);
 
       this.setState({
-        cleanHtmlSource: !readabilityArticle
+        srcDoc: !readabilityArticle
           ? `<h1>Sorry, issue parsing ${url}</h1>`
-          : readabilityArticle.content,
-        readabilityArticle
+          : readabilityArticle.content
       });
+
+      if (typeof onParse === "function") {
+        onParse(readabilityArticle);
+      }
     } catch (err) {
       if (onError) {
         onError(err);
@@ -49,7 +51,7 @@ class ReadabilityView extends PureComponent {
 
   render() {
     const { renderLoader, url, iframeProps } = this.props;
-    const { cleanHtmlSource: srcDoc } = this.state;
+    const { srcDoc } = this.state;
 
     return srcDoc === undefined
       ? renderLoader

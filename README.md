@@ -1,6 +1,6 @@
 ## react-reader-view
 
-Load any url into clean plain text for reading. Strip away the noise.
+Load any url into clean plain text for reading
 
 Main Feature:
 
@@ -10,7 +10,7 @@ How to use:
 
 - Just pass in a Url into the component and your good to go.
 
-If you need to use this natively theres a react-native version [Example](https://github.com/j-mendez/react-native-reader)
+If you need to use this natively theres a react-native version [react-native-reader](https://github.com/j-mendez/react-native-reader)
 
 ## Installation Instructions
 
@@ -32,9 +32,10 @@ import ReaderView from "react-reader-view";
 
 ## Available Props
 
-| prop         | default | type      | description                                                               |
-| ------------ | ------- | --------- | ------------------------------------------------------------------------- |
-| url          | ""      | string    | Required: A valid web url source                                          |
-| renderLoader | null    | Component | Optional: A custom component to render while your content is being loaded |
-| onError      | null    | function  | Optional: A function that fires the error if a url is not valid           |
-| iframeProps  | null    | object    | Optional: A valid iframe html property                                    |
+| prop         | default   | type      | description                                                               |
+| ------------ | --------- | --------- | ------------------------------------------------------------------------- |
+| url          | ""        | string    | Required: A valid web url source                                          |
+| renderLoader | "loading" | Component | Optional: A custom component to render while your content is being loaded |
+| iframeProps  | null      | object    | Optional: A valid iframe html property                                    |
+| onParse      | null      | function  | Optional: A callback function that returns the readability Object         |
+| onError      | null      | function  | Optional: A function that fires the error if a url is not valid           |
