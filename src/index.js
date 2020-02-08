@@ -1,24 +1,6 @@
 import React, { PureComponent } from "react";
 import { cleanHtml } from "clean-html-js";
 
-const styles = {
-  title: {
-    fontSize: 36,
-    fontWeight: "600"
-  },
-  container: {
-    paddingHorizontal: 8
-  },
-  flex: {
-    flex: 1,
-    display: "flex"
-  },
-  loadingContainer: {
-    justifyContent: "center",
-    alignItems: "center"
-  }
-};
-
 class ReadabilityView extends PureComponent {
   constructor(props) {
     super(props);
