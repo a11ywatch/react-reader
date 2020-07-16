@@ -1,16 +1,30 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import { cleanHtml } from "clean-html-js";
 
-class ReadabilityView extends PureComponent {
-  constructor(props) {
-    super(props);
+type ReadabilityState = {
+  srcDoc?: string;
+};
 
-    this.state = {
-      srcDoc: undefined
-    };
+type ReadabilityProps = {
+  url: string;
+  title?: string;
+  onError?: (result: string) => any;
+  onParse?: (result: string) => any;
+  renderLoader?: any;
+  iframeProps?: any;
+};
 
-    this.parseHtml = this.parseHtml.bind(this);
-  }
+class ReadabilityView extends React.PureComponent<
+  ReadabilityProps,
+  ReadabilityState
+> {
+  static defaultProps = {
+    url: "",
+    renderLoader: "Loading...",
+    iframeProps: {},
+    onError: null,
+    onParse: null,
+  };
 
   componentDidMount() {
     this.parseHtml();
@@ -25,7 +39,7 @@ class ReadabilityView extends PureComponent {
     }
   }
 
-  async parseHtml() {
+  parseHtml = async () => {
     const { url, title, onError, onParse } = this.props;
 
     try {
@@ -36,7 +50,7 @@ class ReadabilityView extends PureComponent {
       this.setState({
         srcDoc: !readabilityArticle
           ? `<span>Sorry, issue parsing ${url}</span>`
-          : readabilityArticle.content
+          : readabilityArticle.content,
       });
 
       if (typeof onParse === "function") {
@@ -47,24 +61,16 @@ class ReadabilityView extends PureComponent {
         onError(err);
       }
     }
-  }
+  };
 
   render() {
     const { renderLoader, url, iframeProps } = this.props;
-    const { srcDoc } = this.state;
+    const srcDoc = this.state && this.state.srcDoc;
 
-    return srcDoc === undefined
+    return !srcDoc
       ? renderLoader
       : React.createElement("iframe", { url, srcDoc, ...iframeProps });
   }
 }
-
-ReadabilityView.defaultProps = {
-  url: "",
-  renderLoader: "Loading...",
-  iframeProps: {},
-  onError: null,
-  onParse: null
-};
 
 export default ReadabilityView;
