@@ -26,11 +26,6 @@ class ReadabilityView extends React.PureComponent<
     onParse: null,
   };
 
-  constructor(props) {
-    super(props);
-    this.parseHtml = this.parseHtml.bind(this);
-  }
-
   componentDidMount() {
     this.parseHtml();
   }
