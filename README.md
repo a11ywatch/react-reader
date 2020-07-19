@@ -25,7 +25,15 @@ $ npm install react-reader-view
 ```typescript
 import ReaderView from "react-reader-view";
 
-<ReaderView url="https://www.a11ywatch.com" />;
+<ReaderView
+  url="https://www.nytimes.com"
+  css={`
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    }
+  `}
+/>;
 ```
 
 - For more help getting started checkout [Example](https://github.com/A11yWatch/react-reader-example-project)
