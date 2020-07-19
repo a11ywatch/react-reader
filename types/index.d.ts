@@ -9,6 +9,7 @@ declare type ReadabilityProps = {
     onParse?: (result: string) => any;
     renderLoader?: any;
     iframeProps?: any;
+    css?: string;
 };
 declare class ReadabilityView extends React.PureComponent<ReadabilityProps, ReadabilityState> {
     static defaultProps: {

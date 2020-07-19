@@ -12,6 +12,7 @@ type ReadabilityProps = {
   onParse?: (result: string) => any;
   renderLoader?: any;
   iframeProps?: any;
+  css?: string;
 };
 
 class ReadabilityView extends React.PureComponent<
@@ -64,12 +65,19 @@ class ReadabilityView extends React.PureComponent<
   };
 
   render() {
-    const { renderLoader, url, iframeProps } = this.props;
+    const { renderLoader, url, iframeProps, css } = this.props;
     const srcDoc = this.state && this.state.srcDoc;
 
     return !srcDoc
       ? renderLoader
-      : React.createElement("iframe", { url, srcDoc, ...iframeProps });
+      : React.createElement("iframe", {
+          url,
+          srcDoc:
+            srcDoc && typeof css === "string"
+              ? `<style>${css}</style>${srcDoc}`
+              : srcDoc,
+          ...iframeProps,
+        });
   }
 }
 

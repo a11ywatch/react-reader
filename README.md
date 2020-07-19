@@ -35,6 +35,7 @@ import ReaderView from "react-reader-view";
 | prop         | default      | type      | description                                                               |
 | ------------ | ------------ | --------- | ------------------------------------------------------------------------- |
 | url          | ""           | string    | Required: A valid web url source                                          |
+| css          | ""           | string    | Optional: A css stylesheet as a string                                    |
 | renderLoader | "Loading..." | Component | Optional: A custom component to render while your content is being loaded |
 | iframeProps  | null         | object    | Optional: A valid iframe html property                                    |
 | onParse      | null         | function  | Optional: A callback function that returns the readability Object         |
