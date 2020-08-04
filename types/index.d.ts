@@ -12,6 +12,7 @@ declare type ReadabilityProps = {
     css?: string;
 };
 declare class ReadabilityView extends React.PureComponent<ReadabilityProps, ReadabilityState> {
+    private sourcedDocExcludes;
     static defaultProps: {
         url: string;
         renderLoader: string;

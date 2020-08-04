@@ -19,6 +19,8 @@ class ReadabilityView extends React.PureComponent<
   ReadabilityProps,
   ReadabilityState
 > {
+  private sourcedDocExcludes: [string] = ["pdf"];
+
   static defaultProps = {
     url: "",
     renderLoader: "Loading...",
@@ -43,6 +45,11 @@ class ReadabilityView extends React.PureComponent<
   parseHtml = async () => {
     const { url, title, onError, onParse } = this.props;
 
+    if (url.includes(".pdf")) {
+      this.setState({ srcDoc: "pdf" });
+      return;
+    }
+
     try {
       const response = await fetch(url);
       const html = await response.text();
@@ -53,7 +60,6 @@ class ReadabilityView extends React.PureComponent<
           ? `<span>Sorry, issue parsing ${url}</span>`
           : readabilityArticle.content,
       });
-
       if (typeof onParse === "function") {
         onParse(readabilityArticle);
       }
@@ -66,16 +72,19 @@ class ReadabilityView extends React.PureComponent<
 
   render() {
     const { renderLoader, url, iframeProps, css } = this.props;
-    const srcDoc = this.state && this.state.srcDoc;
+    const srcDocState = this.state && this.state.srcDoc;
+    const srcDoc =
+      srcDocState && !this.sourcedDocExcludes.includes(srcDocState)
+        ? `${
+            typeof css === "string" ? `<style>${css}</style>` : ""
+          }${srcDocState}`
+        : null;
 
-    return !srcDoc
+    return !srcDocState
       ? renderLoader
       : React.createElement("iframe", {
           url,
-          srcDoc:
-            srcDoc && typeof css === "string"
-              ? `<style>${css}</style>${srcDoc}`
-              : srcDoc,
+          srcDoc,
           ...iframeProps,
         });
   }
