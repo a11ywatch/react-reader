@@ -20,6 +20,7 @@ class ReadabilityView extends React.PureComponent<
   ReadabilityState
 > {
   private sourcedDocExcludes: [string] = ["pdf"];
+  private mounted: boolean = false;
 
   static defaultProps = {
     url: "",
@@ -30,7 +31,12 @@ class ReadabilityView extends React.PureComponent<
   };
 
   componentDidMount() {
+    this.mounted = true;
     this.parseHtml();
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
   }
 
   componentDidUpdate(prevProps) {
@@ -45,21 +51,24 @@ class ReadabilityView extends React.PureComponent<
   parseHtml = async () => {
     const { url, title, onError, onParse } = this.props;
 
-    if (url.includes(".pdf")) {
-      this.setState({ srcDoc: "pdf" });
-      return;
-    }
-
     try {
-      const response = await fetch(url);
-      const html = await response.text();
-      const readabilityArticle = await cleanHtml(html, url);
+      if (!this.mounted) {
+        return;
+      }
+      if (url.includes(".pdf")) {
+        this.mounted && this.setState({ srcDoc: "pdf" });
+        return;
+      }
+      const response = this.mounted && (await fetch(url));
+      const html = this.mounted && (await response.text());
+      const readabilityArticle = this.mounted && (await cleanHtml(html, url));
 
-      this.setState({
-        srcDoc: !readabilityArticle
-          ? `<span>Sorry, issue parsing ${url}</span>`
-          : readabilityArticle.content,
-      });
+      this.mounted &&
+        this.setState({
+          srcDoc: !readabilityArticle
+            ? `<span>Sorry, issue parsing ${url}</span>`
+            : readabilityArticle.content,
+        });
       if (typeof onParse === "function") {
         onParse(readabilityArticle);
       }

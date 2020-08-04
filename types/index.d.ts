@@ -21,6 +21,7 @@ declare class ReadabilityView extends React.PureComponent<ReadabilityProps, Read
         onParse: null;
     };
     componentDidMount(): void;
+    componentWillUnmount(): void;
     componentDidUpdate(prevProps: any): void;
     parseHtml: () => Promise<void>;
     render(): any;
