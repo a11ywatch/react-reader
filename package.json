@@ -1,6 +1,6 @@
 {
   "name": "react-reader-view",
-  "version": "1.1.17",
+  "version": "1.1.18",
   "description": "React package that turns a Website into a Safari like Readability reader mode view",
   "keywords": [
     "readability",
@@ -11,7 +11,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
-    "prepare": "tsc"
+    "prepare": "tsc && mv types/* dist/"
   },
   "repository": {
     "type": "git",
