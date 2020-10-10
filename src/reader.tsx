@@ -1,15 +1,17 @@
 import React from "react";
-import { cleanHtml } from "clean-html-js";
+import cleanHtml from "clean-html-js";
+import type { Config as CleanHtmlConfig, ReaderObject } from "clean-html-js";
 
 type ReadabilityState = {
   srcDoc?: string;
 };
 
 type ReadabilityProps = {
+  config?: CleanHtmlConfig;
   url: string;
   title?: string;
   onError?: (result: string) => any;
-  onParse?: (result: string) => any;
+  onParse(result: ReaderObject): void;
   renderLoader?: any;
   iframeProps?: any;
   css?: string;

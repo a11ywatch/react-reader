@@ -1,6 +1,6 @@
 {
   "name": "react-reader-view",
-  "version": "1.1.18",
+  "version": "1.2.0",
   "description": "React package that turns a Website into a Safari like Readability reader mode view",
   "keywords": [
     "readability",
@@ -8,7 +8,7 @@
     "react-readability",
     "react-reader"
   ],
-  "main": "dist/index.js",
+  "main": "dist/reader.js",
   "scripts": {
     "test": "jest",
     "prepare": "tsc && mv types/* dist/"
@@ -18,18 +18,29 @@
     "url": "https://github.com/jeffreymendez1993/react-readability.git"
   },
   "dependencies": {
-    "clean-html-js": "^1.0.4",
-    "react": "^16.13.1"
+    "clean-html-js": "^1.1.4"
   },
   "devDependencies": {
+    "@testing-library/react": "^11.0.4",
     "@types/react": "^16.9.43",
-    "jest": "^25.1.0",
-    "typescript": "^3.7.5"
+    "jest": "^26.5.2",
+    "jest-fetch-mock": "^3.0.3",
+    "react": "^16.0.0",
+    "react-dom": "^16.13.1",
+    "ts-jest": "^26.4.1",
+    "typescript": "^3.7.5",
+    "xhr-mock": "^2.5.1"
   },
   "author": "Jeffrey Mendez <jeffmendez19@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jeffreymendez1993/react-reader/issues"
   },
-  "homepage": "https://github.com/jeffreymendez1993/react-reader#readme"
+  "homepage": "https://github.com/jeffreymendez1993/react-reader#readme",
+  "jest": {
+    "preset": "ts-jest",
+    "moduleNameMapper": {
+      "^@app/(.*)$": "<rootDir>/src/$1"
+    }
+  }
 }
