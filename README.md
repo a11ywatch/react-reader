@@ -1,6 +1,6 @@
 ## react-reader-view
 
-[![j-mendez](https://circleci.com/gh/j-mendez/react-reader-view.svg?style=svg)](https://circleci.com/gh/j-mendez/react-reader-view)
+[![j-mendez](https://circleci.com/gh/j-mendez/react-reader.svg?style=svg)](https://circleci.com/gh/j-mendez/react-reader)
 
 Load any url into clean plain text for reading
 
